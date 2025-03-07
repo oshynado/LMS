@@ -84,3 +84,38 @@ function report() {
 }
 
 addBook("The Alchemist", "Paulo Coelho");
+
+
+function addBook(title, author) {
+  let id = books.length;
+  let new_book = { id: id, title: title, author: author, isBorrowed: false };
+  books.push(new_book);
+}
+
+
+function Borrowbook(id){
+  let book = books.find(b => b.id === id);
+  if (book){
+    if (book.isBorrowed){
+      book.isBorrowed=true;
+      console.log('The book has been borrowed. : "${book.title}"');
+  } 
+      else{
+    console.log('The book "${book.title}" is already borrowed');
+  }
+      
+}
+else{
+  console.log('There is no book with the ID number ${id}');
+}
+}
+function listBorrowedBooks() {
+  let borrowedBooks = books.filter(b => b.isBorrowed);
+  if (borrowedBooks.length > 0) {
+    console.log("Borrowed books:");
+    borrowedBooks.forEach(book => console.log('- ${book.title} (${book.author}'));
+  }
+  else {
+    console.log("There are currently no books borrowed.");
+  }
+}
