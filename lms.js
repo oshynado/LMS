@@ -10,22 +10,22 @@ function addBook(title, author) {
 }
 
 function removeBook(id) {
-  const index = books.findIndex(book => book.id === id);
+  const index = books.findIndex((book) => book.id === id);
   if (index !== -1) {
-      console.log(`Book "${books[index].title}" removed.`);
-      books.splice(index, 1);
+    console.log(`Book "${books[index].title}" removed.`);
+    books.splice(index, 1);
   } else {
-      console.log("Book not found.");
+    console.log("Book not found.");
   }
 }
 
 function listAvailableBooks() {
-  const availableBooks = books.filter(book => !book.isBorrowed);
+  const availableBooks = books.filter((book) => !book.isBorrowed);
   if (availableBooks.length === 0) {
-      console.log("No available books.");
+    console.log("No available books.");
   } else {
-      console.log("Available Books:");
-      availableBooks.forEach(book => console.log(`${book.id}: ${book.title} by ${book.author}`));
+    console.log("Available Books:");
+    availableBooks.forEach((book) => console.log(`${book.id}: ${book.title} by ${book.author}`));
   }
 }
 addBook(1, "The Alchemist", "Paulo Coelho");
@@ -39,7 +39,6 @@ removeBook(2);
 
 console.log("\nAfter removing:");
 listAvailableBooks();
-
 
 //omar nader section
 
@@ -85,37 +84,29 @@ function report() {
 
 addBook("The Alchemist", "Paulo Coelho");
 
+//ziad tamer section
 
-function addBook(title, author) {
-  let id = books.length;
-  let new_book = { id: id, title: title, author: author, isBorrowed: false };
-  books.push(new_book);
-}
-
-
-function Borrowbook(id){
-  let book = books.find(b => b.id === id);
-  if (book){
-    if (book.isBorrowed){
-      book.isBorrowed=true;
+function Borrowbook(id) {
+  let book = books.find((b) => b.id === id);
+  if (book) {
+    if (book.isBorrowed) {
+      book.isBorrowed = true;
       console.log('The book has been borrowed. : "${book.title}"');
-  } 
-      else{
-    console.log('The book "${book.title}" is already borrowed');
+    } else {
+      console.log('The book "${book.title}" is already borrowed');
+    }
+  } else {
+    console.log("There is no book with the ID number ${id}");
   }
-      
-}
-else{
-  console.log('There is no book with the ID number ${id}');
-}
 }
 function listBorrowedBooks() {
-  let borrowedBooks = books.filter(b => b.isBorrowed);
+  let borrowedBooks = books.filter((b) => b.isBorrowed);
   if (borrowedBooks.length > 0) {
     console.log("Borrowed books:");
-    borrowedBooks.forEach(book => console.log('- ${book.title} (${book.author}'));
-  }
-  else {
+    borrowedBooks.forEach((book) =>
+      console.log("- ${book.title} (${book.author}")
+    );
+  } else {
     console.log("There are currently no books borrowed.");
-  }
+  }
 }
