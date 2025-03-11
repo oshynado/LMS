@@ -3,34 +3,39 @@ let books = [];
 let authors = new Set();
 
 function addBook(title, author) {
-  let id = books.length;
+  let id = books.length+1;
   authors.add(author);
   let new_book = { id: id, title: title, author: author, isBorrowed: false };
   books.push(new_book);
 }
 
 function removeBook(id) {
-  const index = books.findIndex((book) => book.id === id);
+  const index = books.findIndex(book => book.id === id);
   if (index !== -1) {
-    console.log(`Book "${books[index].title}" removed.`);
-    books.splice(index, 1);
+      console.log(`Book "${id}" "${books[index].title}" removed.`);
+      books.splice(index, 1);
   } else {
-    console.log("Book not found.");
+      console.log("Book not found.");
   }
 }
 
-function listAvailableBooks() {
-  const availableBooks = books.filter((book) => !book.isBorrowed);
-  if (availableBooks.length === 0) {
-    console.log("No available books.");
-  } else {
-    console.log("Available Books:");
-    availableBooks.forEach((book) => console.log(`${book.id}: ${book.title} by ${book.author}`));
+function listAvailableBooks(){
+  if(books.length===0){
+    console.log("empty")
+  }else{
+    for(let book of books){
+      if(book.isBorrowed == false){
+        console.log(`${book.id} ${book.title} ,By ${book.author}`);
+      }else{
+        continue
+      }
+    }
   }
 }
-addBook(1, "The Alchemist", "Paulo Coelho");
-addBook(2, "To Kill a Mockingbird", "Harper Lee");
-addBook(3, "1984", "George Orwell");
+
+addBook( "The Alchemist", "Paulo Coelho");
+addBook( "To Kill a Mockingbird", "Harper Lee");
+addBook( "1984", "George Orwell");
 
 console.log("\nBefore removing:");
 listAvailableBooks();
@@ -39,7 +44,6 @@ removeBook(2);
 
 console.log("\nAfter removing:");
 listAvailableBooks();
-
 //omar nader section
 
 function booksNumber() {
